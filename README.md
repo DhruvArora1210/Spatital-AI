@@ -1,13 +1,13 @@
 --------------------------------------------
-**Lumina: Embodied Spatial Intelligence**
+**Embodied Spatial Intelligence**
 --------------------------------------------
-"Most AI agents live in chat windows. Lumina lives in the real world."
+"Most AI agents live in chat windows. Spatial Intelligence lives in the real world."
 
-Lumina is a Multi-Agent Embodied AI designed to assist the visually impaired. Unlike standard RAG systems that retrieve text documents, Lumina retrieves physical location vectors. It grants the AI Object Permanence—the ability to remember where objects are in a room even when the camera is no longer looking at them.
+Multi-Agent Embodied AI designed to assist the visually impaired. Unlike standard RAG systems that retrieve text documents, Lumina retrieves physical location vectors. It grants the AI Object Permanence—the ability to remember where objects are in a room even when the camera is no longer looking at them.
 --------------------------------------------
 The Architecture: "The Cortex"
 --------------------------------------------
-Lumina is not a monolith; it is a federation of 5 specialized agents working in an asynchronous loop. This separation of concerns ensures that heavy visual processing does not block cognitive reasoning.
+Spatial Intelligence is not a monolith; it is a federation of 5 specialized agents working in an asynchronous loop. This separation of concerns ensures that heavy visual processing does not block cognitive reasoning.
 
 **The 5-Agent Roster**
 
@@ -29,7 +29,7 @@ The "Superego." A deterministic logic layer that validates LLM hallucinations. I
 Technical Deep Dive
 --------------------------------------------
 1. Spatial Vector RAG (The "Secret Sauce")
-Standard Vector Search maps Text -> Text. Lumina maps Visual Features -> Spatial Coordinates. When the Archivist sees a "cup", it doesn't just store the word "cup". It stores a payload containing:
+Standard Vector Search maps Text -> Text. Spatial Intelligence maps Visual Features -> Spatial Coordinates. When the Archivist sees a "cup", it doesn't just store the word "cup". It stores a payload containing:
 
 Vector: CLIP/All-MiniLM embedding of the label.
 
@@ -38,7 +38,7 @@ Payload: { "angle_abs": 120.5, "dist": 1.2m, "timestamp": 17070500 }.
 This allows us to answer questions like "Where did I leave my keys?" by querying the vector space, retrieving the absolute heading stored 10 minutes ago, and calculating the relative turn needed now.
 
 2. Relative Navigation Engine (SpatialMath)
-Raw coordinates are useless to a blind user. Lumina's SpatialMath module normalizes the vector space relative to the user's current facing direction.
+Raw coordinates are useless to a blind user. Spatial Intelligence's SpatialMath module normalizes the vector space relative to the user's current facing direction.
 
 Formula: (Object_Heading - User_Heading + 180) % 360 - 180
 
@@ -64,8 +64,8 @@ Ollama (Running llama3 or mistral)
 SETUP 
 --------------------------------------------
 # 1. Clone the repository
-git clone https://github.com/DhruvArora1210/Lumina-Spatial-AI.git
-cd lumina
+git clone https://github.com/DhruvArora1210/Spatial-AI.git
+cd Spatial Intelligence
 
 # 2. Install dependencies
 pip install ultralytics qdrant-client sentence-transformers speechrecognition pyttsx3 ollama opencv-python
@@ -80,7 +80,7 @@ ollama run llama3
 Running the System
 --------------------------------------------
 # Verify all systems (Camera, DB, LLM) are active
-python debug_lumina.py
+python debug_Spatial_Intelligence.py
 
 # Launch the Core System
 python main.py
@@ -101,6 +101,6 @@ main.py: The entry point. Initializes the Audio Thread and the Main Event Loop.
 
  
 Why This Matters (The "Social Good" Aspect)
-While many Multi-Agent systems focus on optimizing business workflows, Lumina applies Agentic Workflow Patterns to accessibility.
+While many Multi-Agent systems focus on optimizing business workflows, Spatial Intelligence applies Agentic Workflow Patterns to accessibility.
 
 By decoupling Perception (Computer Vision) from Reasoning (LLM), we solve the latency problem. The Vision system can run at 30FPS tracking objects, while the LLM only wakes up when the user asks a question. This makes the system responsive enough for real-time navigation aid.
